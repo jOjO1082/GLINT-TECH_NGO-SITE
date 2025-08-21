@@ -278,7 +278,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 0 var(--padding-desktop);
+  padding: 3rem var(--padding-desktop);
   background-color: var(--background-color);
 }
 
@@ -290,6 +290,7 @@
   justify-content: space-between;
   align-items: start;
   gap: 2rem;
+  
 }
 
 .paragraph{
@@ -311,6 +312,7 @@
   font-weight: 700;
   color: var(--primary-color);
   margin-bottom: 1rem;
+  text-align: end;
 }
 
 .section-cards-container{
