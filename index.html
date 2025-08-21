@@ -26,7 +26,7 @@
         <div class="nav-menu">
           <div class="logo">
             <a href="index.html"
-              ><img src="logo.png" alt="Glint Tech Logo"
+              ><img src="/images/Logo.png" alt="Glint Tech Logo"
             /></a>
           </div>
 
@@ -43,11 +43,14 @@
         <!-- Hero Section -->
         <div class="hero-section">
           <div class="hero-content">
-            <h1>Empowering the Next Generation with Tech Skills</h1>
-            <p>
-              Free tech training for young adults and children, helping them
-              earn from home and stand out in hteir early careers
-            </p>
+            <div class="text-content-container">
+              <h1>Empowering the Next Generation with Tech Skills</h1>
+              <p>
+                Free tech training for young adults and children, helping them
+                earn from home and stand out in hteir early careers
+              </p>
+            </div>
+            
 
             <div class="buttons-container">
               <a href="join-form.html" class="join-button">Join the Training</a>
@@ -83,7 +86,7 @@
         </div>
 
         <div class="section-cards-container">
-          <div class="section-card">
+          <div class="section-card first">
             <div class="card-top">
               <div class="icon-container blue">
                 <i class="fa-solid fa-arrow-right"></i>
@@ -104,7 +107,7 @@
             </div>
           </div>
 
-          <div class="section-card">
+          <div class="section-card second">
             <div class="card-top">
               <div class="icon-container yellow">
                 <i class="fa-solid fa-arrow-right"></i>
@@ -124,7 +127,7 @@
             </div>
           </div>
 
-          <div class="section-card">
+          <div class="section-card third">
             <div class="card-top">
               <div class="icon-container red">
                 <i class="fa-solid fa-arrow-right"></i>
@@ -274,7 +277,7 @@
 
         <div class="why-join-cards-container">
           <div class="why-join-card">
-            <div class="icon-container">
+            <div class="icon-container why">
               <i class="fa-solid fa-circle"></i>
             </div>
 
@@ -285,7 +288,7 @@
           </div>
 
           <div class="why-join-card">
-            <div class="icon-container">
+            <div class="icon-container why-yellow">
               <i class="fa-solid fa-circle"></i>
             </div>
 
@@ -296,7 +299,7 @@
           </div>
 
           <div class="why-join-card">
-            <div class="icon-container">
+            <div class="icon-container why">
               <i class="fa-solid fa-circle"></i>
             </div>
 
@@ -317,7 +320,7 @@
         <div class="testimonial-cards-container">
           <div class="testimonial-card">
             <div class="image-container">
-              <img src="/images/test-person" alt="image of a person" />
+              <img src="/images/Team Members Image Avatar.png" alt="image of a person" />
             </div>
 
             <div class="testimonial-card-text">
@@ -339,7 +342,7 @@
 
           <div class="testimonial-card">
             <div class="image-container">
-              <img src="/images/test-person" alt="image of a person" />
+              <img src="/images/Team Members Image Avatar.png" alt="image of a person" />
             </div>
 
             <div class="testimonial-card-text">
@@ -361,7 +364,7 @@
 
           <div class="testimonial-card">
             <div class="image-container">
-              <img src="/images/test-person" alt="image of a person" />
+              <img src="/images/Team Members Image Avatar.png" alt="image of a person" />
             </div>
 
             <div class="testimonial-card-text">
@@ -412,7 +415,7 @@
             <div class="step-supporting-text">
               <p>
                 Signing up is easy! Click on the
-                <span class="bold-text">“Join the Training”</span> button and
+                <span>“Join the Training”</span> button and
                 fill out a short form with your name, email, phone number, and
                 preferred training program.
               </p>
@@ -499,23 +502,30 @@
               <h3>Training Formats:</h3>
 
               <ul>
-                <li>
-                  <i class="fa-regular fa-square-check"></i> Physical Workshops
-                  <p>
-                    If you’re in an area where we’re hosting a session, you can
-                    join us for an immersive, hands-on training experience. We
-                    bring laptops, internet access, and expert instructors to
-                    ensure you get the best learning environment.
+                <li class="session">
+                  <i class="fa-regular fa-square-check"></i> <div class="training-format">
+                    <h4>Physical Workshops</h4>
+                    <p>
+                      If you’re in an area where we’re hosting a session, you can
+                      join us for an immersive, hands-on training experience. We
+                      bring laptops, internet access, and expert instructors to
+                      ensure you get the best learning environment.
                   </p>
+                  </div>
                 </li>
-                <li>
-                  <i class="fa-regular fa-square-check"></i> Online Learnings
-                  <p>
-                    Can’t attend in person? No problem! Our live virtual
-                    sessions and recorded lessons allow you to learn at your own
-                    pace, with support from our instructors whenever you need
-                    help.
-                  </p>
+
+                <li class="session">
+                  <i class="fa-regular fa-square-check"></i> 
+                  
+                  <div class="training-format">
+                    <h4>Online Learnings</h4>
+                   <p>
+                      Can’t attend in person? No problem! Our live virtual
+                      sessions and recorded lessons allow you to learn at your own
+                      pace, with support from our instructors whenever you need
+                      help.
+                    </p>
+                  </div>
                 </li>
               </ul>
             </div>
@@ -594,8 +604,7 @@
                 </li>
                 <li>
                   <i class="fa-regular fa-square-check"></i> Continued
-                  Mentorship – Even after your training, you’ll be part of
-                  <span
+                  Mentorship – Even after your training, you’ll be part of <span
                     >a community where you can ask questions, get feedback, and
                     stay motivated.</span
                   >
@@ -603,7 +612,7 @@
               </ul>
             </div>
 
-            <div class="step-what-you-will-get">
+            <!-- <div class="step-what-you-will-get">
               <div class="what-you-will-get-header">
                 <h3>What You'll Get After Registration:</h3>
               </div>
@@ -630,7 +639,7 @@
                 details about the next training session in your local government
                 area or online.
               </p>
-            </div>
+            </div> -->
 
             <div class="button-container">
               <a href="join.html">Join the Training</a>
@@ -638,6 +647,132 @@
           </div>
         </div>
       </section>
+
+      <!-- Second hero section -->
+      <section class="call-to-action-section">
+        <div class="right-call-to-action-text-and-button">
+          <div class="text">
+            <h2>Taking Tech Education to Every Local Government in Nigeria</h2>
+            <p>
+              We travel to communities to train young minds for free. Your support helps us reach more people.
+            </p>
+          </div>
+
+          <div class="join-button-container">
+            <a href="donate.html" class="donate-button">Volunteer or Donate now</a>
+          </div>
+        </div>
+
+        <div class="left-call-to-action-image">
+          <img src="/images/students-paying-attention-class 1.png" alt="Call to Action Image" />
+      </section>
+
+      <!-- Contact Section -->
+       <section class="contact-section-and-footer-section">
+          <section class="contact-section">
+            <div class="contact-card">
+          <div class="contact-card-header">
+            <h2>Contact Us</h2>
+          </div>
+
+          <div class="contact-card-list">
+            <div class="contact-card-list-item">
+              <i class="fa-solid fa-location-dot"></i><p>29 Durban Street, Wuse 2 Abuja</p> 
+            </div>
+              <div class="contact-card-list-item">
+                <i class="fa-solid fa-envelope-open"></i> <p>glinttech@gmail.com</p>
+              </div>
+
+              <div class="contact-card-list-item"><i  class="fa-solid fa-phone"></i> <span>2347065008157</span> <span>2347065004567</span>
+              </div>
+            </d>
+          </div>
+            </div>
+
+           <div class="contact-form">
+          <form action="" method="POST">
+            <div class="fullname">
+              <div class="first-name">
+                <label for="first-name">First Name</label>
+                <input type="text" name="first-name" placeholder="First name">
+              </div>
+              <div class="last-name">
+                <label for="last-name">Last Name</label>
+                <input type="text" name="last-name" placeholder="Last name">
+              </div>
+            </div>
+
+            <div class="email">
+              <label for="email">Email</label>
+              <input type="email" name="email" placeholder="Your email address">
+            </div>
+
+            <div class="subject">
+              <label for="subject">Subject</label>
+              <input type="text" name="subject" placeholder="Subject">
+            </div>
+
+            <div class="message">
+              <label for="message">Message</label>
+              <textarea name="message" placeholder="Your message"></textarea>
+            </div>
+
+            <button type="submit" class="form-submit-button">Submit</button>
+            
+          </form>
+            </div>
+          </section>
+        
+
+          <section class="footer-section">
+        <div class="foot-logo">
+          <a href="index.html"
+            ><img src="/images/Logo.png" alt="Glint Tech Logo"
+          /></a>
+        </div>
+
+        <div class="footer-menu">
+          <div class="right">
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="about.html">Contact</a></li>
+              <li><a href="services.html">About Us</a></li>
+              <li class="link"><a href="donate.html">Join the training</a></li>
+            </ul>
+          </div>
+
+          <div class="left">
+            <ul>
+              <li><a href="masterclass.html">Master Class</a></li>
+              <li><a href="internship.html">Internship</a></li>
+              <li><a href="careers.html">Careers</a></li>
+              <li class="link"><a href="donate.html">Donate</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="copyright">
+          <div class="left">
+            <p>&copy; 2023 Glint Tech. All rights reserved.</p>
+          </div>
+
+          <!-- <div class="right">
+            <ul>
+              <li><a href="#"><i class="fa-brands fa-facebook"></i></a></li>
+              <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
+              <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+              <li><a href="#"><i class="fa-brands fa-linkedin"></i></a></li>
+            </ul>
+          </div> -->
+        </div>
+       
+          </section>
+       </section>
+
+
+      <!-- Footer Section -->
+      
+
     </div>
 
     <script src="main.js"></script>
