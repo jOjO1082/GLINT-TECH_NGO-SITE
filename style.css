@@ -154,6 +154,89 @@
   color: #fff;
 }
 
+/* Menu icon and mobile menu */
+.menu-icon{
+  display:none;
+  width: fit-content;
+  height: auto;
+}
+
+.mobile-menu{
+  width: 100%;
+  height: auto;
+  display: none;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  background-color: var(--background-color);
+  padding: 1rem;
+  border-radius: var(--border-radius);
+  z-index: 10000;
+  display: absolute;
+}
+
+.mobile-menu ul .mobilemenu-button{
+  width: 100%;
+  height: auto;
+  padding: 1rem 2rem;
+  background-color: var(--primary-color);
+  color: #fff;
+  border-radius: var(--border-radius);
+  text-align: center;
+}
+
+.mobile-menu ul .mobilemenu-button a{
+  color: var(--white, #fff);
+  text-decoration: none;
+}
+
+.mobile-menu ul li a{
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+.close-icon-head{
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mobile-menu-logo{
+  width: fit-content;
+  height: auto;
+}
+
+.mobile-menu-logo img{
+  width: 120px;
+  height: auto;
+}
+
+.close-icon-head i{
+  font-size: 1rem;
+  color: var(--wh);
+  cursor: pointer;
+}
+
+.mobile-menu ul{
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  list-style: none;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.menu-icon i{
+  font-size: 1.5rem;
+  color: var(--background-color);
+}
+
 /* Hero section main */
 .hero-section{
   width: 100%;
@@ -1521,8 +1604,7 @@ form{
       transition: transform var(--transition-duration);
     }
    
-     
-     
+        
     .menu ul .button {
       width: fit-content;
       height: auto;
@@ -2588,7 +2670,7 @@ form{
       transition: transform var(--transition-duration);
     }
   
-    .menu {
+    .menu ul{
       width: fit-content;
       height: auto;
       display: none;
@@ -2596,6 +2678,16 @@ form{
       justify-content: center;
       align-items: center;
     }
+
+    .menu-icon {
+       display: flex;
+       width: fit-content;
+       height: auto;
+       cursor: pointer;
+         }
+
+
+    
 
     .watch-button {
       width: fit-content;
