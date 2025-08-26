@@ -2596,6 +2596,26 @@ form{
       justify-content: center;
       align-items: center;
     }
+
+    .watch-button {
+      width: fit-content;
+      height: auto;
+      padding: 1rem 2rem;
+      background-color: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      border-radius: var(--border-radius);
+      font-size: 1.2rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: background-color var(--transition-duration);
+      display: none;
+    }
+  
+    .watch-button:hover {
+      background-color: var(--background-color);
+      cursor: pointer;
+      color: var(--Key-color-Dark-Color, #434343);
+    }
   
     /* Hero section main */
     .hero-section {
@@ -3537,9 +3557,12 @@ form{
       justify-content: start;
       align-items: start;
       padding: 2rem var(--padding-mobile);
-      background-color: var(--tertiary-color);
+      background-color: var(--background-color);
       gap: 1rem;
-      z-index: 1;
+      /* z-index: 1; */
+      position: static !important;
+      top: auto !important;
+      left: auto !important;
     }
   
     .contact-card {
@@ -3555,6 +3578,9 @@ form{
       transition: transform var(--transition-duration);
       gap: 1rem;
       color: #fff;
+      position: static !important;
+        top: auto !important;
+        left: auto !important;
     }
   
     .contact-card-header {
@@ -3611,7 +3637,9 @@ form{
       border-radius: var(--border-radius);
       /* padding: 2rem; */
       background-color: var(--white, #FFF);
-      /* position: relative; */
+      position: static !important;
+      top: auto !important;
+      left: auto !important;
     }
   
     form {
@@ -3623,7 +3651,7 @@ form{
       align-items: start;
       gap: 1rem;
       z-index: 100;
-      /* position: absolute; */
+      position: static !important;
       
       padding: 1rem;
       background-color: var(--white, #FFF);
