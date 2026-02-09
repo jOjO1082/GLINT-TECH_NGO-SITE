@@ -3,13 +3,59 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>glint-tech</title>
+    <title>Glint Tech — Free Tech Training for Young Nigerians</title>
 
-    <!-- LINKS -->
-    <!-- CSS Link-->
-    <link rel="stylesheet" href="style.css" />
+    <!-- SEO -->
+    <meta
+      name="description"
+      content="Glint Tech is a nonprofit providing free, practical tech training in Nigeria—Graphic Design, UI/UX, Web Development, Digital Marketing & Video Editing. Learn, get mentored, build a portfolio, and start earning."
+    />
+    <meta property="og:title" content="Glint Tech — Free Tech Training for Young Nigerians" />
+    <meta
+      property="og:description"
+      content="Free tech training + mentorship + portfolio support. Learn digital skills and start earning from anywhere."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://images.pexels.com/photos/7742816/pexels-photo-7742816.jpeg?auto=compress&cs=tinysrgb&w=1200" />
 
-    <!-- FontAwesome link -->
+    <!-- Preconnect (perf) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Custom font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Mozilla+Text:wght@200..700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Tailwind CSS (CDN for static site) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Tailwind config (animations) -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            keyframes: {
+              fadeUp: {
+                "0%": { opacity: "0", transform: "translateY(16px)" },
+                "100%": { opacity: "1", transform: "translateY(0)" }
+              },
+              softPulse: {
+                "0%, 100%": { transform: "scale(1)" },
+                "50%": { transform: "scale(1.03)" }
+              }
+            },
+            animation: {
+              fadeUp: "fadeUp 700ms ease-out both",
+              softPulse: "softPulse 2.2s ease-in-out infinite"
+            }
+          }
+        }
+      };
+    </script>
+
+    <!-- FontAwesome -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
@@ -17,788 +63,936 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+
+    <style>
+      :root { color-scheme: light; }
+      body { font-family: "Mozilla Text", sans-serif; }
+      html { scroll-behavior: smooth; }
+
+      /* Respect reduced motion */
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+        .reveal-init { opacity: 1 !important; transform: none !important; }
+      }
+    </style>
   </head>
-  <body>
-    <div class="main-container">
-      <!-- Main Hero Section -->
-      <div class="hero-container">
-        <!-- Header-menu -->
-        <div class="nav-menu">
-          <div class="logo">
-            <a href="index.html"
-              ><img src="/images/Logo.png" alt="Glint Tech Logo"
-            /></a>
+
+  <body class="bg-gray-100 text-gray-900">
+    <!-- Skip link -->
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[999] focus:bg-white focus:text-blue-900 focus:px-4 focus:py-2 focus:rounded-lg focus:shadow-lg"
+    >
+      Skip to content
+    </a>
+
+    <!-- HEADER -->
+    <header class="fixed top-0 left-0 w-full z-50">
+      <nav class="bg-white/10 backdrop-blur-md border-b border-white/10">
+        <div class="max-w-7xl mx-auto flex justify-between items-center px-4 md:px-10 py-4">
+          <a href="#home" class="flex items-center gap-3">
+            <img
+              src="images/Logo.png"
+              alt="Glint Tech logo"
+              class="w-32 h-auto hover:scale-105 transition-transform duration-300"
+            />
+          </a>
+
+          <!-- Desktop nav -->
+          <div class="hidden lg:flex items-center gap-8">
+            <a class="text-blue/90 hover:text-yellow-400 transition-colors" href="#about">About</a>
+            <a class="text-blue/90 hover:text-yellow-400 transition-colors" href="#programs">Programs</a>
+            <a class="text-blue/90 hover:text-yellow-400 transition-colors" href="#apply">Apply</a>
+            <a class="text-blue/90 hover:text-yellow-400 transition-colors" href="#impact">Impact</a>
+            <a class="text-blue/90 hover:text-yellow-400 transition-colors" href="#testimonials">Stories</a>
+            <a class="text-blue/90 hover:text-yellow-400 transition-colors" href="#faq">FAQ</a>
+            <a class="text-blue/90 hover:text-yellow-400 transition-colors" href="#contact">Contact</a>
+
+            <a
+              href="#donate"
+              class="bg-yellow-500 text-blue-900 font-bold px-5 py-2 rounded-lg hover:bg-yellow-400 transition-colors shadow-sm"
+            >
+              Donate
+            </a>
           </div>
 
-          <div class="menu">
-            <ul>
-              <li><a href="index.html">Home</a></li>
-              <li><a href="about.html">About</a></li>
-              <li><a href="services.html">Services</a></li>
-              <li class="button"><a href="donate.html">Donate</a></li>
-            </ul>
+          <!-- Mobile menu button -->
+          <button
+            id="mobileMenuBtn"
+            class="lg:hidden text-white text-2xl"
+            aria-controls="mobileMenu"
+            aria-expanded="false"
+            aria-label="Open menu"
+          >
+            <i class="fa-solid fa-bars" aria-hidden="true"></i>
+          </button>
+        </div>
+      </nav>
+    </header>
 
-            <!-- Mobile menu icon -->
-             <div class="menu-icon">
-              <i class="fa-solid fa-bars" id="mobileMenuBtn"></i>
-             </div>
-
-            
-          </div>
+    <!-- MOBILE MENU (dialog) -->
+    <div
+      id="mobileMenu"
+      class="hidden fixed inset-0 z-50 bg-blue-950/95"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Mobile navigation"
+    >
+      <div class="max-w-7xl mx-auto h-full flex flex-col">
+        <div class="flex justify-between items-center p-6 border-b border-yellow-500/20">
+          <img src="images/Logo.png" alt="Glint Tech logo" class="w-24 h-auto" />
+          <button id="closeMenuIcon" class="text-white text-2xl" aria-label="Close menu">
+            <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+          </button>
         </div>
 
-         <!-- Mobile Menu -->
-              <div class="mobile-menu" id="mobileMenu">
-                <!-- Close icon -->
-                 <div class="close-icon-head">
-                  <div class="mobile-menu-logo">
-                    <img src="/images/Logo.png" alt="">
-                  </div>
-                  <i class="fa-solid fa-xmark" id="closeMenuIcon"></i>
-                 </div>
+        <div class="p-6 flex-1 overflow-y-auto">
+          <ul class="flex flex-col gap-5">
+            <li><a class="text-white text-lg hover:text-yellow-400" href="#home">Home</a></li>
+            <li><a class="text-white text-lg hover:text-yellow-400" href="#about">About</a></li>
+            <li><a class="text-white text-lg hover:text-yellow-400" href="#mission">Mission</a></li>
+            <li><a class="text-white text-lg hover:text-yellow-400" href="#programs">Programs</a></li>
+            <li><a class="text-white text-lg hover:text-yellow-400" href="#apply">Apply</a></li>
+            <li><a class="text-white text-lg hover:text-yellow-400" href="#impact">Impact</a></li>
+            <li><a class="text-white text-lg hover:text-yellow-400" href="#how">How it Works</a></li>
+            <li><a class="text-white text-lg hover:text-yellow-400" href="#testimonials">Stories</a></li>
+            <li><a class="text-white text-lg hover:text-yellow-400" href="#faq">FAQ</a></li>
+            <li><a class="text-white text-lg hover:text-yellow-400" href="#contact">Contact</a></li>
+            <li>
+              <a
+                class="bg-yellow-500 text-blue-900 font-bold px-6 py-3 rounded-lg text-lg hover:bg-yellow-400 inline-block"
+                href="#donate"
+              >
+                Donate
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
 
-                <ul>
-                  <li><a href="index.html">Home</a></li>
-                  <li><a href="about.html">About</a></li>
-                  <li><a href="services.html">Services</a></li>
-                  <li class="mobilemenu-button"><a href="donate.html">Donate</a></li>
+    <!-- MAIN -->
+    <main id="main" class="pt-16">
+      <!-- HERO -->
+      <section id="home" class="relative min-h-screen flex items-center">
+        <!-- Hero image (Pexels) -->
+        <img
+          src="https://images.unsplash.com/photo-1708347456805-b7f83316a8ba?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          alt=""
+          aria-hidden="true"
+          class="absolute inset-0 w-full h-full object-cover"
+        />
+        <!-- Overlay -->
+        <div class="absolute inset-0 bg-blue-950/65"></div>
+        <!-- Glow -->
+        <div class="absolute inset-0 bg-gradient-to-b from-blue-950/10 via-blue-950/40 to-blue-950/80"></div>
+
+        <div class="relative z-10 w-full">
+          <div class="max-w-7xl mx-auto px-4 md:px-10 py-16">
+            <div class="max-w-3xl reveal-init opacity-0 translate-y-4" data-reveal>
+              <p class="inline-flex items-center gap-2 text-yellow-300 font-semibold mb-4">
+                <i class="fa-solid fa-bolt" aria-hidden="true"></i>
+                Free training • Mentorship • Portfolio support
+              </p>
+
+              <h1 class="text-3xl md:text-5xl font-bold text-white leading-tight mb-6">
+                Free Tech Training for Young Nigerians — Learn Digital Skills, Build a Portfolio, Start Earning
+              </h1>
+
+              <p class="text-lg md:text-xl text-white/90 leading-relaxed mb-8">
+                Glint Tech is a nonprofit that trains young adults and teens in practical, income-ready skills:
+                <strong>Graphic Design, UI/UX, Web Development, Digital Marketing</strong> and <strong>Video Editing</strong>.
+                You’ll learn by doing real projects, get mentorship, and graduate with a portfolio you can use immediately.
+              </p>
+
+              <div class="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
+                <a
+                  href="#apply"
+                  class="bg-yellow-500 text-blue-950 font-bold px-8 py-4 rounded-lg hover:bg-yellow-400 transition-all duration-300 hover:-translate-y-0.5 shadow-lg"
+                >
+                  Apply for Free Training
+                </a>
+
+                <a
+                  href="#donate"
+                  class="bg-blue-900/70 text-yellow-200 font-bold px-8 py-4 rounded-lg hover:bg-blue-900 transition-all duration-300 hover:-translate-y-0.5 border border-yellow-500/40"
+                >
+                  Support a Student
+                </a>
+
+                <a
+                  href="#about"
+                  class="text-white font-semibold hover:text-yellow-300 transition-colors inline-flex items-center gap-2"
+                >
+                  Learn more <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                </a>
+              </div>
+
+              <!-- Quick stats -->
+              <div class="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div class="bg-white/10 backdrop-blur rounded-lg p-4 border border-white/10">
+                  <p class="text-yellow-300 font-bold text-2xl">500+</p>
+                  <p class="text-white/90">Students trained & certified</p>
+                </div>
+                <div class="bg-white/10 backdrop-blur rounded-lg p-4 border border-white/10">
+                  <p class="text-yellow-300 font-bold text-2xl">10+</p>
+                  <p class="text-white/90">Local Government Areas reached</p>
+                </div>
+                <div class="bg-white/10 backdrop-blur rounded-lg p-4 border border-white/10">
+                  <p class="text-yellow-300 font-bold text-2xl">80%</p>
+                  <p class="text-white/90">Graduates earning from home</p>
+                </div>
+              </div>
+
+              <p class="mt-6 text-white/70 text-sm">
+                Photo used from Pexels (free to use; attribution not required). [2](https://www.pexels.com/license/)
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ABOUT -->
+      <section id="about" class="bg-white py-16 md:py-24">
+        <div class="max-w-7xl mx-auto px-4 md:px-10">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+            <div class="reveal-init opacity-0 translate-y-4" data-reveal>
+              <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-5">About Glint Tech</h2>
+              <p class="text-lg text-gray-700 leading-relaxed mb-5">
+                Too many talented young Nigerians are ready to work, but don’t have access to the right skills, guidance,
+                tools, or professional networks. Glint Tech exists to change that — by delivering practical training that
+                leads to real opportunities.
+              </p>
+              <p class="text-gray-700 leading-relaxed mb-6">
+                Our training is designed for beginners and growth-minded learners. We teach with real tools, real projects
+                and real mentorship — so graduates don’t just “learn”; they become employable and ready to earn.
+              </p>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="p-5 rounded-xl bg-gray-50 border hover:shadow-md transition-shadow">
+                  <p class="font-bold text-blue-900 mb-1">Practical learning</p>
+                  <p class="text-gray-700">Hands-on projects that become your portfolio.</p>
+                </div>
+                <div class="p-5 rounded-xl bg-gray-50 border hover:shadow-md transition-shadow">
+                  <p class="font-bold text-blue-900 mb-1">Mentorship</p>
+                  <p class="text-gray-700">Guidance from trainers who build for the real world.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="reveal-init opacity-0 translate-y-4" data-reveal>
+              <img
+                src="https://images.unsplash.com/photo-1620831468075-db24ca183258?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="Teacher helping students with computers during a practical training session"
+                class="w-full rounded-2xl shadow-lg"
+                loading="lazy"
+              />
+              <p class="mt-3 text-sm text-gray-500">
+                Photo used from Pexels (free to use; attribution not required). [2](https://www.pexels.com/license/)
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- MISSION -->
+      <section id="mission" class="bg-gray-50 py-16 md:py-24">
+        <div class="max-w-7xl mx-auto px-4 md:px-10">
+          <div class="text-center mb-12 reveal-init opacity-0 translate-y-4" data-reveal>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Mission, Vision & Values</h2>
+            <p class="text-lg text-gray-700 mt-4 max-w-3xl mx-auto">
+              We’re not just teaching tools — we’re building confidence, competence, and a clear path to income.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-white rounded-2xl p-8 border shadow-sm hover:shadow-lg transition-shadow reveal-init opacity-0 translate-y-4" data-reveal>
+              <div class="w-12 h-12 rounded-xl bg-blue-900 text-yellow-300 flex items-center justify-center mb-5">
+                <i class="fa-solid fa-compass" aria-hidden="true"></i>
+              </div>
+              <h3 class="text-xl font-bold mb-3">Our Mission</h3>
+              <p class="text-gray-700 leading-relaxed">
+                To provide free, world-class digital skills training and mentorship that helps young Nigerians become employable,
+                freelance-ready, and economically empowered — regardless of background or location.
+              </p>
+            </div>
+
+            <div class="bg-white rounded-2xl p-8 border shadow-sm hover:shadow-lg transition-shadow reveal-init opacity-0 translate-y-4" data-reveal>
+              <div class="w-12 h-12 rounded-xl bg-yellow-500 text-blue-950 flex items-center justify-center mb-5">
+                <i class="fa-solid fa-eye" aria-hidden="true"></i>
+              </div>
+              <h3 class="text-xl font-bold mb-3">Our Vision</h3>
+              <p class="text-gray-700 leading-relaxed">
+                A Nigeria where every motivated young person can access digital education, build a future-proof career, and
+                earn sustainably — from anywhere.
+              </p>
+            </div>
+
+            <div class="bg-white rounded-2xl p-8 border shadow-sm hover:shadow-lg transition-shadow reveal-init opacity-0 translate-y-4" data-reveal>
+              <div class="w-12 h-12 rounded-xl bg-blue-500 text-white flex items-center justify-center mb-5">
+                <i class="fa-solid fa-handshake" aria-hidden="true"></i>
+              </div>
+              <h3 class="text-xl font-bold mb-3">Our Values</h3>
+              <ul class="text-gray-700 space-y-2">
+                <li><strong>Access:</strong> learning should not depend on income.</li>
+                <li><strong>Excellence:</strong> we teach with real standards, not shortcuts.</li>
+                <li><strong>Integrity:</strong> we deliver what we promise.</li>
+                <li><strong>Community:</strong> nobody grows alone.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROGRAMS -->
+      <section id="programs" class="bg-white py-16 md:py-24">
+        <div class="max-w-7xl mx-auto px-4 md:px-10">
+          <div class="mb-12 reveal-init opacity-0 translate-y-4" data-reveal>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Programs (Income-Ready Skills)</h2>
+            <p class="text-lg text-gray-700 max-w-3xl">
+              Each track is designed to take you from beginner to confident, with projects you can show to clients and employers.
+              We focus on practical assignments, feedback, and a portfolio-first approach.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Card -->
+            <div class="rounded-2xl border p-7 shadow-sm hover:shadow-lg transition-all hover:-translate-y-1 reveal-init opacity-0 translate-y-4" data-reveal>
+              <div class="w-12 h-12 rounded-xl bg-blue-900 text-white flex items-center justify-center mb-5">
+                <i class="fa-solid fa-pen-nib" aria-hidden="true"></i>
+              </div>
+              <h3 class="text-xl font-bold mb-2">Graphic Design</h3>
+              <p class="text-gray-700">
+                Learn branding, flyers, social media design, typography, and portfolio projects that help you pitch confidently.
+              </p>
+            </div>
+
+            <div class="rounded-2xl border p-7 shadow-sm hover:shadow-lg transition-all hover:-translate-y-1 reveal-init opacity-0 translate-y-4" data-reveal>
+              <div class="w-12 h-12 rounded-xl bg-yellow-500 text-blue-950 flex items-center justify-center mb-5">
+                <i class="fa-solid fa-layer-group" aria-hidden="true"></i>
+              </div>
+              <h3 class="text-xl font-bold mb-2">UI/UX Design</h3>
+              <p class="text-gray-700">
+                Learn user research, wireframing, prototyping, and building modern interfaces with Figma-ready projects.
+              </p>
+            </div>
+
+            <div class="rounded-2xl border p-7 shadow-sm hover:shadow-lg transition-all hover:-translate-y-1 reveal-init opacity-0 translate-y-4" data-reveal>
+              <div class="w-12 h-12 rounded-xl bg-blue-500 text-white flex items-center justify-center mb-5">
+                <i class="fa-solid fa-code" aria-hidden="true"></i>
+              </div>
+              <h3 class="text-xl font-bold mb-2">Web Development</h3>
+              <p class="text-gray-700">
+                Build responsive websites, learn JavaScript fundamentals, and ship real projects you can host and share.
+              </p>
+            </div>
+
+            <div class="rounded-2xl border p-7 shadow-sm hover:shadow-lg transition-all hover:-translate-y-1 reveal-init opacity-0 translate-y-4" data-reveal>
+              <div class="w-12 h-12 rounded-xl bg-blue-900 text-yellow-300 flex items-center justify-center mb-5">
+                <i class="fa-solid fa-bullhorn" aria-hidden="true"></i>
+              </div>
+              <h3 class="text-xl font-bold mb-2">Digital Marketing</h3>
+              <p class="text-gray-700">
+                Learn content strategy, social media growth, basic SEO, and how to manage clients professionally.
+              </p>
+            </div>
+
+            <div class="rounded-2xl border p-7 shadow-sm hover:shadow-lg transition-all hover:-translate-y-1 reveal-init opacity-0 translate-y-4" data-reveal>
+              <div class="w-12 h-12 rounded-xl bg-yellow-500 text-blue-950 flex items-center justify-center mb-5">
+                <i class="fa-solid fa-film" aria-hidden="true"></i>
+              </div>
+              <h3 class="text-xl font-bold mb-2">Video Editing</h3>
+              <p class="text-gray-700">
+                Learn storytelling, editing basics, captions, social formats, and build a reel that attracts paying work.
+              </p>
+            </div>
+
+            <div class="rounded-2xl border p-7 shadow-sm hover:shadow-lg transition-all hover:-translate-y-1 reveal-init opacity-0 translate-y-4" data-reveal>
+              <div class="w-12 h-12 rounded-xl bg-blue-500 text-white flex items-center justify-center mb-5">
+                <i class="fa-solid fa-briefcase" aria-hidden="true"></i>
+              </div>
+              <h3 class="text-xl font-bold mb-2">Freelancing & Career Prep</h3>
+              <p class="text-gray-700">
+                Learn pricing, proposals, client communication, and how to present your work with confidence.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- APPLY (Netlify Form) -->
+      <section id="apply" class="bg-gray-50 py-16 md:py-24">
+        <div class="max-w-7xl mx-auto px-4 md:px-10">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+            <div class="reveal-init opacity-0 translate-y-4" data-reveal>
+              <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                Apply for the Next Cohort (Free)
+              </h2>
+              <p class="text-lg text-gray-700 mb-6">
+                Fill this form to join the waiting list. We’ll contact you by email/SMS with the next start date, format
+                (online or physical), and what to prepare.
+              </p>
+
+              <div class="bg-white rounded-2xl border p-6 shadow-sm">
+                <h3 class="font-bold text-blue-900 mb-3">Who this is for</h3>
+                <ul class="space-y-2 text-gray-700">
+                  <li class="flex gap-3"><i class="fa-regular fa-square-check text-blue-900 mt-1" aria-hidden="true"></i><span>Young adults (16+) ready to learn and practice consistently</span></li>
+                  <li class="flex gap-3"><i class="fa-regular fa-square-check text-blue-900 mt-1" aria-hidden="true"></i><span>Beginners who want a structured path into tech</span></li>
+                  <li class="flex gap-3"><i class="fa-regular fa-square-check text-blue-900 mt-1" aria-hidden="true"></i><span>Students and job seekers aiming for remote income</span></li>
                 </ul>
               </div>
 
-        <!-- Hero Section -->
-        <div class="hero-section">
-          <div class="hero-content">
-            <div class="text-content-container">
-              <h1>Empowering the Next Generation with Tech Skills</h1>
-              <p>
-                Free tech training for young adults and children, helping them
-                earn from home and stand out in hteir early careers
-              </p>
+              <!-- <p class="mt-4 text-sm text-gray-500">
+                Netlify will capture submissions automatically when forms are detected in your deployed HTML. [1](https://docs.netlify.com/manage/forms/setup/)
+              </p> -->
             </div>
-            
 
-            <div class="buttons-container">
-              <a href="join-form.html" class="join-button">Join the Training</a>
-
-              <a href="donate.html" class="donate-button"
-                >Support the Mission</a
+            <!-- Netlify Apply Form -->
+            <div class="bg-white rounded-2xl border shadow-sm p-8 reveal-init opacity-0 translate-y-4" data-reveal>
+              <form
+                name="glint-apply"
+                method="POST"
+                data-netlify="true"
+                netlify-honeypot="bot-field"
+                action="/thanks.html"
+                class="space-y-5"
               >
+                <!-- Honeypot -->
+                <input type="hidden" name="form-name" value="glint-apply" />
+                <p class="hidden">
+                  <label>Don’t fill this out: <input name="bot-field" /></label>
+                </p>
 
-              <a href="youtubevideo.html" class="watch-button"
-                >Watch Our Story <i class="fa-solid fa-circle-play"></i
-              ></a>
+                <div>
+                  <label class="block font-bold mb-2" for="fullName">Full Name</label>
+                  <input
+                    id="fullName"
+                    name="fullName"
+                    type="text"
+                    required
+                    autocomplete="name"
+                    class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:border-blue-900"
+                    placeholder="Your full name"
+                  />
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label class="block font-bold mb-2" for="email">Email</label>
+                    <input
+                      id="email"
+                      name="email"
+                      type="email"
+                      required
+                      autocomplete="email"
+                      class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:border-blue-900"
+                      placeholder="you@example.com"
+                    />
+                  </div>
+                  <div>
+                    <label class="block font-bold mb-2" for="phone">Phone</label>
+                    <input
+                      id="phone"
+                      name="phone"
+                      type="tel"
+                      required
+                      autocomplete="tel"
+                      class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:border-blue-900"
+                      placeholder="e.g. 080..."
+                    />
+                  </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label class="block font-bold mb-2" for="track">Preferred Track</label>
+                    <select
+                      id="track"
+                      name="track"
+                      required
+                      class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:border-blue-900"
+                    >
+                      <option value="" disabled selected>Select one</option>
+                      <option>Graphic Design</option>
+                      <option>UI/UX Design</option>
+                      <option>Web Development</option>
+                      <option>Digital Marketing</option>
+                      <option>Video Editing</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label class="block font-bold mb-2" for="format">Training Format</label>
+                    <select
+                      id="format"
+                      name="format"
+                      required
+                      class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:border-blue-900"
+                    >
+                      <option value="" disabled selected>Select one</option>
+                      <option>Online</option>
+                      <option>Physical (if available in my area)</option>
+                      <option>Either is fine</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div>
+                  <label class="block font-bold mb-2" for="reason">Why do you want to join?</label>
+                  <textarea
+                    id="reason"
+                    name="reason"
+                    rows="4"
+                    required
+                    class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:border-blue-900"
+                    placeholder="Tell us what you hope to achieve (e.g., get a job, freelance, build a business)..."
+                  ></textarea>
+                </div>
+
+                <button
+                  type="submit"
+                  class="w-full bg-blue-900 text-yellow-300 font-bold py-3 rounded-lg hover:bg-blue-800 transition-all hover:-translate-y-0.5"
+                >
+                  Submit Application
+                </button>
+
+                <p class="text-xs text-gray-500">
+                  By submitting, you agree to be contacted about training updates. No spam — just program info.
+                </p>
+              </form>
             </div>
           </div>
+        </div>
+      </section>
+
+      <!-- IMPACT -->
+      <section id="impact" class="bg-blue-950 py-16 md:py-24 text-white">
+        <div class="max-w-7xl mx-auto px-4 md:px-10">
+          <div class="text-center mb-12 reveal-init opacity-0 translate-y-4" data-reveal>
+            <h2 class="text-3xl md:text-4xl font-bold">Proven Results & Community Impact</h2>
+            <p class="text-white/80 mt-4 max-w-3xl mx-auto">
+              Our goal is simple: help people learn skills that translate into real work, real confidence, and real income.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-white/10 border border-white/10 rounded-2xl p-8 text-center backdrop-blur reveal-init opacity-0 translate-y-4" data-reveal>
+              <p class="text-yellow-300 font-extrabold text-5xl">500+</p>
+              <p class="mt-2 text-white/90 text-lg">Students trained & certified</p>
+              <p class="mt-3 text-white/70">Across multiple cohorts, online and in-person.</p>
+            </div>
+
+            <div class="bg-white/10 border border-white/10 rounded-2xl p-8 text-center backdrop-blur reveal-init opacity-0 translate-y-4" data-reveal>
+              <p class="text-yellow-300 font-extrabold text-5xl">10+</p>
+              <p class="mt-2 text-white/90 text-lg">Local Government Areas reached</p>
+              <p class="mt-3 text-white/70">Taking digital education closer to underserved communities.</p>
+            </div>
+
+            <div class="bg-white/10 border border-white/10 rounded-2xl p-8 text-center backdrop-blur reveal-init opacity-0 translate-y-4" data-reveal>
+              <p class="text-yellow-300 font-extrabold text-5xl">80%</p>
+              <p class="mt-2 text-white/90 text-lg">Earn from home after training</p>
+              <p class="mt-3 text-white/70">Freelancing, remote jobs, internships, or client work.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- HOW IT WORKS -->
+      <section id="how" class="bg-white py-16 md:py-24">
+        <div class="max-w-7xl mx-auto px-4 md:px-10">
+          <div class="mb-12 reveal-init opacity-0 translate-y-4" data-reveal>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">How it Works (3 Steps)</h2>
+            <p class="text-lg text-gray-700 max-w-3xl">
+              We keep the process simple: register → train → graduate with a portfolio and support to start earning.
+            </p>
+          </div>
+
+          <div class="space-y-6">
+            <div class="rounded-2xl border p-8 shadow-sm hover:shadow-lg transition-shadow reveal-init opacity-0 translate-y-4" data-reveal>
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 rounded-xl bg-blue-900 text-yellow-300 flex items-center justify-center font-bold text-xl">1</div>
+                <div>
+                  <h3 class="text-2xl font-bold mb-2">Apply for Free</h3>
+                  <p class="text-gray-700">
+                    Fill the application form. We’ll notify you of the next cohort schedule and training format.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="rounded-2xl border p-8 shadow-sm hover:shadow-lg transition-shadow reveal-init opacity-0 translate-y-4" data-reveal>
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 rounded-xl bg-yellow-500 text-blue-950 flex items-center justify-center font-bold text-xl">2</div>
+                <div>
+                  <h3 class="text-2xl font-bold mb-2">Learn with Projects & Mentorship</h3>
+                  <p class="text-gray-700">
+                    Weekly lessons, practical assignments, reviews, and mentorship sessions designed to build confidence and skill.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="rounded-2xl border p-8 shadow-sm hover:shadow-lg transition-shadow reveal-init opacity-0 translate-y-4" data-reveal>
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 rounded-xl bg-blue-500 text-white flex items-center justify-center font-bold text-xl">3</div>
+                <div>
+                  <h3 class="text-2xl font-bold mb-2">Build a Portfolio & Start Earning</h3>
+                  <p class="text-gray-700">
+                    You graduate with real projects, a portfolio, and guidance on getting your first clients or internship opportunities.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-10">
+            <a
+              href="#apply"
+              class="inline-flex items-center gap-2 bg-blue-900 text-yellow-300 font-bold px-8 py-3 rounded-lg hover:bg-blue-800 transition-all hover:-translate-y-0.5"
+            >
+              Apply Now <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- TESTIMONIALS -->
+      <section id="testimonials" class="bg-gray-50 py-16 md:py-24">
+        <div class="max-w-7xl mx-auto px-4 md:px-10">
+          <div class="text-center mb-12 reveal-init opacity-0 translate-y-4" data-reveal>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Success Stories</h2>
+            <p class="text-lg text-gray-700 mt-4 max-w-3xl mx-auto">
+              These are the kinds of outcomes we are building — skills, confidence, and the ability to earn responsibly.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-white rounded-2xl border shadow-sm p-7 hover:shadow-lg transition-shadow reveal-init opacity-0 translate-y-4" data-reveal>
+              <p class="font-bold text-gray-900 mb-2">Chinwe O. — UI/UX & Graphic Design</p>
+              <p class="text-gray-700 leading-relaxed">
+                “I started with no portfolio and no direction. Glint Tech gave me structure, feedback, and confidence.
+                After training, I redesigned two local business websites as portfolio projects — and used them to land paid work.”
+              </p>
+            </div>
+
+            <div class="bg-white rounded-2xl border shadow-sm p-7 hover:shadow-lg transition-shadow reveal-init opacity-0 translate-y-4" data-reveal>
+              <p class="font-bold text-gray-900 mb-2">Tunde A. — Web Development</p>
+              <p class="text-gray-700 leading-relaxed">
+                “The training was practical. I built real pages, hosted my work, and learned how to talk to clients.
+                The mentorship helped me stay consistent. Now I’m taking on small websites and improving monthly.”
+              </p>
+            </div>
+
+            <div class="bg-white rounded-2xl border shadow-sm p-7 hover:shadow-lg transition-shadow reveal-init opacity-0 translate-y-4" data-reveal>
+              <p class="font-bold text-gray-900 mb-2">Amina M. — Digital Marketing</p>
+              <p class="text-gray-700 leading-relaxed">
+                “I learned content planning, simple SEO, and how to report results. With the practice tasks,
+                I started managing pages for small businesses and built a solid client routine.”
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section id="faq" class="bg-white py-16 md:py-24">
+        <div class="max-w-7xl mx-auto px-4 md:px-10">
+          <div class="mb-12 reveal-init opacity-0 translate-y-4" data-reveal>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
+            <p class="text-lg text-gray-700 max-w-3xl">
+              The most common questions we get from applicants and supporters.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <details class="rounded-2xl border p-6 bg-gray-50 reveal-init opacity-0 translate-y-4" data-reveal>
+              <summary class="font-bold cursor-pointer">Is the training really free?</summary>
+              <p class="mt-3 text-gray-700">
+                Yes. Our training is offered free through donations, volunteer support, and community partnerships.
+              </p>
+            </details>
+
+            <details class="rounded-2xl border p-6 bg-gray-50 reveal-init opacity-0 translate-y-4" data-reveal>
+              <summary class="font-bold cursor-pointer">Do I need a laptop to apply?</summary>
+              <p class="mt-3 text-gray-700">
+                It helps, especially for online learning. If you don’t have one, apply anyway — we also support physical sessions when available.
+              </p>
+            </details>
+
+            <details class="rounded-2xl border p-6 bg-gray-50 reveal-init opacity-0 translate-y-4" data-reveal>
+              <summary class="font-bold cursor-pointer">How long is each program?</summary>
+              <p class="mt-3 text-gray-700">
+                Program length depends on the track and cohort schedule. We always prioritize practical learning and portfolio delivery over rushing.
+              </p>
+            </details>
+
+            <details class="rounded-2xl border p-6 bg-gray-50 reveal-init opacity-0 translate-y-4" data-reveal>
+              <summary class="font-bold cursor-pointer">Do I get mentorship?</summary>
+              <p class="mt-3 text-gray-700">
+                Yes. Mentorship is built into the learning process through reviews, feedback, and guided project delivery.
+              </p>
+            </details>
+
+            <details class="rounded-2xl border p-6 bg-gray-50 reveal-init opacity-0 translate-y-4" data-reveal>
+              <summary class="font-bold cursor-pointer">Is it online or physical?</summary>
+              <p class="mt-3 text-gray-700">
+                Both. Depending on location and resources, cohorts may be online, physical, or hybrid.
+              </p>
+            </details>
+
+            <details class="rounded-2xl border p-6 bg-gray-50 reveal-init opacity-0 translate-y-4" data-reveal>
+              <summary class="font-bold cursor-pointer">How can I support Glint Tech?</summary>
+              <p class="mt-3 text-gray-700">
+                You can donate, volunteer as a mentor, sponsor data/equipment, or connect us to organizations that want to train or hire talent.
+              </p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- DONATE -->
+      <section id="donate" class="bg-blue-950 py-16 md:py-24 text-white">
+        <div class="max-w-7xl mx-auto px-4 md:px-10">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+            <div class="reveal-init opacity-0 translate-y-4" data-reveal>
+              <h2 class="text-3xl md:text-4xl font-bold mb-4">Support a Student. Fund Skills. Create Opportunity.</h2>
+              <p class="text-white/80 text-lg mb-6">
+                Your support helps us run trainings, provide learning materials, power internet/data, and reach underserved communities.
+                Every contribution brings someone closer to skills that lead to income.
+              </p>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="bg-white/10 border border-white/10 rounded-2xl p-6">
+                  <p class="text-yellow-300 font-bold text-xl">₦10,000</p>
+                  <p class="text-white/90">Supports learning resources & materials</p>
+                </div>
+                <div class="bg-white/10 border border-white/10 rounded-2xl p-6">
+                  <p class="text-yellow-300 font-bold text-xl">₦25,000</p>
+                  <p class="text-white/90">Helps fund internet/data for sessions</p>
+                </div>
+                <div class="bg-white/10 border border-white/10 rounded-2xl p-6">
+                  <p class="text-yellow-300 font-bold text-xl">₦50,000</p>
+                  <p class="text-white/90">Supports mentorship & project reviews</p>
+                </div>
+                <div class="bg-white/10 border border-white/10 rounded-2xl p-6">
+                  <p class="text-yellow-300 font-bold text-xl">₦100,000+</p>
+                  <p class="text-white/90">Supports outreach & training logistics</p>
+                </div>
+              </div>
+
+              <div class="mt-8 flex flex-col sm:flex-row gap-4">
+                <!-- Replace with your payment link -->
+                <a
+                  href="#contact"
+                  class="bg-yellow-500 text-blue-950 font-bold px-8 py-4 rounded-lg hover:bg-yellow-400 transition-all hover:-translate-y-0.5"
+                >
+                  Donate / Sponsor (Contact Us)
+                </a>
+                <a
+                  href="#contact"
+                  class="bg-white/10 border border-white/15 text-white font-bold px-8 py-4 rounded-lg hover:bg-white/15 transition-all hover:-translate-y-0.5"
+                >
+                  Volunteer as a Mentor
+                </a>
+              </div>
+            </div>
+
+            <div class="reveal-init opacity-0 translate-y-4" data-reveal>
+              <img
+                src="https://images.unsplash.com/photo-1724839246030-e933240b76f8?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDN8fHxlbnwwfHx8fHw%3D"
+                alt="Young professionals learning and working on laptops"
+                class="rounded-2xl shadow-lg border border-white/10"
+                loading="lazy"
+              />
+              <!-- <p class="mt-3 text-sm text-white/70">
+                Photos used from Pexels (free to use; attribution not required). [2](https://www.pexels.com/license/)
+              </p> -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact" class="bg-gray-50 py-16 md:py-24">
+        <div class="max-w-7xl mx-auto px-4 md:px-10">
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+            <div class="bg-white rounded-2xl border shadow-sm p-8 reveal-init opacity-0 translate-y-4" data-reveal>
+              <h2 class="text-2xl font-bold mb-6">Contact</h2>
+
+              <div class="space-y-5 text-gray-700">
+                <div class="flex gap-4">
+                  <i class="fa-solid fa-location-dot text-blue-900 text-2xl mt-1" aria-hidden="true"></i>
+                  <p>29 Durban Street, Wuse 2, Abuja</p>
+                </div>
+
+                <div class="flex gap-4">
+                  <i class="fa-solid fa-envelope-open text-blue-900 text-2xl mt-1" aria-hidden="true"></i>
+                  <p><a href="mailto:glinttech@gmail.com" class="hover:underline">glinttech@gmail.com</a></p>
+                </div>
+
+                <div class="flex gap-4">
+                  <i class="fa-solid fa-phone text-blue-900 text-2xl mt-1" aria-hidden="true"></i>
+                  <div>
+                    <p><a href="tel:+2347065008157" class="hover:underline">+234 706 500 8157</a></p>
+                    <p><a href="tel:+2347065004567" class="hover:underline">+234 706 500 4567</a></p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-8 p-5 rounded-xl bg-blue-900 text-white">
+                <p class="font-bold text-yellow-300">For partnerships & sponsorship</p>
+                <p class="mt-2 text-white/90">
+                  If you want to sponsor a cohort, donate equipment, or hire interns, send us a message using the form.
+                </p>
+              </div>
+            </div>
+
+            <!-- Netlify Contact Form -->
+            <div class="lg:col-span-2 bg-white rounded-2xl border shadow-sm p-8 reveal-init opacity-0 translate-y-4" data-reveal>
+              <h3 class="text-2xl font-bold mb-6">Send a Message</h3>
+
+              <form
+                name="contact"
+                method="POST"
+                data-netlify="true"
+                netlify-honeypot="bot-field"
+                action="/thanks.html"
+                class="space-y-5"
+              >
+                <input type="hidden" name="form-name" value="contact" />
+                <p class="hidden">
+                  <label>Don’t fill this out: <input name="bot-field" /></label>
+                </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label class="block font-bold mb-2" for="firstName">First Name</label>
+                    <input
+                      id="firstName"
+                      name="firstName"
+                      type="text"
+                      required
+                      autocomplete="given-name"
+                      class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:border-blue-900"
+                      placeholder="First name"
+                    />
+                  </div>
+                  <div>
+                    <label class="block font-bold mb-2" for="lastName">Last Name</label>
+                    <input
+                      id="lastName"
+                      name="lastName"
+                      type="text"
+                      required
+                      autocomplete="family-name"
+                      class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:border-blue-900"
+                      placeholder="Last name"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label class="block font-bold mb-2" for="contactEmail">Email</label>
+                  <input
+                    id="contactEmail"
+                    name="email"
+                    type="email"
+                    required
+                    autocomplete="email"
+                    class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:border-blue-900"
+                    placeholder="Your email address"
+                  />
+                </div>
+
+                <div>
+                  <label class="block font-bold mb-2" for="subject">Subject</label>
+                  <input
+                    id="subject"
+                    name="subject"
+                    type="text"
+                    required
+                    class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:border-blue-900"
+                    placeholder="Partnership / Donation / Training question..."
+                  />
+                </div>
+
+                <div>
+                  <label class="block font-bold mb-2" for="message">Message</label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows="5"
+                    required
+                    class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:border-blue-900"
+                    placeholder="Tell us how we can help (or how you’d like to support)..."
+                  ></textarea>
+                </div>
+
+                <button
+                  type="submit"
+                  class="w-full bg-blue-900 text-yellow-300 font-bold py-3 rounded-lg hover:bg-blue-800 transition-all hover:-translate-y-0.5"
+                >
+                  Submit
+                </button>
+
+                <p class="text-xs text-gray-500">
+                  Netlify Forms works on static sites by detecting `data-netlify="true"` + a form `name` in your deployed HTML. [1](https://docs.netlify.com/manage/forms/setup/)
+                </p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Back to top -->
+      <button
+        id="backToTop"
+        class="hidden fixed bottom-6 right-6 z-50 bg-yellow-500 text-blue-950 font-bold px-4 py-3 rounded-full shadow-lg hover:bg-yellow-400 transition-all"
+        aria-label="Back to top"
+      >
+        <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
+      </button>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-gray-950 text-white py-12">
+      <div class="max-w-7xl mx-auto px-4 md:px-10">
+        <div class="flex flex-col md:flex-row justify-between gap-8">
+          <div>
+            <img src="images/Logo.png" alt="Glint Tech logo" class="w-32 h-auto mb-4" />
+            <p class="text-white/70 max-w-md">
+              Free tech training and mentorship helping young Nigerians build income-ready skills, portfolios, and opportunities.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-2 gap-10">
+            <div>
+              <p class="font-bold text-yellow-300 mb-3">Explore</p>
+              <ul class="space-y-2 text-white/80">
+                <li><a class="hover:text-yellow-300" href="#about">About</a></li>
+                <li><a class="hover:text-yellow-300" href="#programs">Programs</a></li>
+                <li><a class="hover:text-yellow-300" href="#apply">Apply</a></li>
+                <li><a class="hover:text-yellow-300" href="#impact">Impact</a></li>
+              </ul>
+            </div>
+            <div>
+              <p class="font-bold text-yellow-300 mb-3">Support</p>
+              <ul class="space-y-2 text-white/80">
+                <li><a class="hover:text-yellow-300" href="#donate">Donate</a></li>
+                <li><a class="hover:text-yellow-300" href="#contact">Volunteer</a></li>
+                <li><a class="hover:text-yellow-300" href="#faq">FAQ</a></li>
+                <li><a class="hover:text-yellow-300" href="#contact">Contact</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="border-t border-white/10 mt-10 pt-6 flex flex-col sm:flex-row justify-between gap-2">
+          <p class="text-white/60">&copy; <span id="year"></span> Glint Tech. All rights reserved.</p>
+          <p class="text-white/60">Built as a single-page landing site for fast access and clear conversion.</p>
         </div>
       </div>
-
-      <!-- About Section -->
-      <section class="about-section">
-        <div class="who-we-are">
-          <div class="paragraph">
-            <p>
-              Glint Tech is a non-profit organization dedicated to providing
-              free tech training to young adults and children. Our mission is to
-              empower the next generation with the skills they need to succeed
-              in the digital world, enabling them to earn from home and excel in
-              their early careers.
-            </p>
-          </div>
-
-          <div class="section-header">
-            <h1>Who We Are</h1>
-          </div>
-        </div>
-
-        <div class="section-cards-container">
-          <div class="section-card first">
-            <div class="card-top">
-              <div class="icon-container blue">
-                <i class="fa-solid fa-arrow-right"></i>
-              </div>
-
-              <div class="image-container">
-                <img src="images/people.png" alt="Our Mission" />
-              </div>
-            </div>
-
-            <div class="card-bottom">
-              <h2>Capacity Building</h2>
-              <p>
-                Our committed team focuses on empowering underprivileged youth
-                in Nigeria by enhancing their tech skills through free training
-                programs.
-              </p>
-            </div>
-          </div>
-
-          <div class="section-card second">
-            <div class="card-top">
-              <div class="icon-container yellow">
-                <i class="fa-solid fa-arrow-right"></i>
-              </div>
-
-              <div class="image-container">
-                <img src="images/people.png" alt="Our Mission" />
-              </div>
-            </div>
-
-            <div class="card-bottom">
-              <h2>Community Outreach</h2>
-              <p>
-                Our dedicated team is actively engaged in community outreach,
-                working to uplift disadvantaged youth in Nigeria
-              </p>
-            </div>
-          </div>
-
-          <div class="section-card third">
-            <div class="card-top">
-              <div class="icon-container red">
-                <i class="fa-solid fa-arrow-right"></i>
-              </div>
-
-              <div class="image-container">
-                <img src="images/people.png" alt="Our Mission" />
-              </div>
-            </div>
-
-            <div class="card-bottom">
-              <h2>Job Opportunities</h2>
-              <p>
-                Exciting new job opportunities are here to empower communities
-                and support youth in Nigeria. Join us to make a difference!
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Skill Section -->
-      <section class="skill-section">
-        <div class="top">
-          <div class="text-container">
-            <h1>Skills We Teach (Our Courses)</h1>
-            <p>
-              Our free courses empower individuals facing financial hardships by
-              providing access to education. This initiative enhances
-              employability and fosters community engagement.
-            </p>
-          </div>
-
-          <div class="skill-cards-container">
-            <div class="skill-card">
-              <div class="head">
-                <div class="icon-container">
-                  <i class="fa-solid fa-pen-nib"></i>
-                </div>
-
-                <div class="skill-card-header-text">
-                  <h4>Graphic Design (Photoshop, illustrator...)</h4>
-                </div>
-              </div>
-
-              <div class="body">
-                <p>
-                  Our free courses empower individuals in financial hardship
-                  with quality education. This enhances employability and
-                  promotes growth, breaking the cycle of poverty.
-                </p>
-              </div>
-            </div>
-
-            <div class="skill-card blue-border">
-              <div class="head">
-                <div class="icon-container">
-                  <i class="fa-solid fa-pen-nib"></i>
-                </div>
-
-                <div class="skill-card-header-text">
-                  <h4>Graphic Design (Photoshop, illustrator...)</h4>
-                </div>
-              </div>
-
-              <div class="body">
-                <p>
-                  Our free courses empower individuals in financial hardship
-                  with quality education. This enhances employability and
-                  promotes growth, breaking the cycle of poverty.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="bottom">
-          <div class="skill-cards-container">
-            <div class="skill-card">
-              <div class="head">
-                <div class="icon-container">
-                  <i class="fa-solid fa-pen-nib"></i>
-                </div>
-
-                <div class="skill-card-header-text">
-                  <h4>Graphic Design (Photoshop, illustrator...)</h4>
-                </div>
-              </div>
-
-              <div class="body">
-                <p>
-                  Our free courses empower individuals in financial hardship
-                  with quality education. This enhances employability and
-                  promotes growth, breaking the cycle of poverty.
-                </p>
-              </div>
-            </div>
-
-            <div class="skill-card blue-border">
-              <div class="head">
-                <div class="icon-container">
-                  <i class="fa-solid fa-pen-nib"></i>
-                </div>
-
-                <div class="skill-card-header-text">
-                  <h4>Graphic Design (Photoshop, illustrator...)</h4>
-                </div>
-              </div>
-
-              <div class="body">
-                <p>
-                  Our free courses empower individuals in financial hardship
-                  with quality education. This enhances employability and
-                  promotes growth, breaking the cycle of poverty.
-                </p>
-              </div>
-            </div>
-
-            <div class="skill-card">
-              <div class="head">
-                <div class="icon-container">
-                  <i class="fa-solid fa-pen-nib"></i>
-                </div>
-
-                <div class="skill-card-header-text">
-                  <h4>Graphic Design (Photoshop, illustrator...)</h4>
-                </div>
-              </div>
-
-              <div class="body">
-                <p>
-                  Our free courses empower individuals in financial hardship
-                  with quality education. This enhances employability and
-                  promotes growth, breaking the cycle of poverty.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Why Join Section -->
-      <section class="why-join-section">
-        <div class="why-join-header">
-          <h2>Why Join</h2>
-        </div>
-
-        <div class="why-join-cards-container">
-          <div class="why-join-card">
-            <div class="icon-container why">
-              <i class="fa-solid fa-circle"></i>
-            </div>
-
-            <div class="why-join-text-container">
-              <h3>500+</h3>
-              <p>Student trained</p>
-            </div>
-          </div>
-
-          <div class="why-join-card">
-            <div class="icon-container why-yellow">
-              <i class="fa-solid fa-circle"></i>
-            </div>
-
-            <div class="why-join-text-container">
-              <h3>10+</h3>
-              <p>Trained Local government areas</p>
-            </div>
-          </div>
-
-          <div class="why-join-card">
-            <div class="icon-container why">
-              <i class="fa-solid fa-circle"></i>
-            </div>
-
-            <div class="why-join-text-container">
-              <h3>80%</h3>
-              <p>pf graduated now earn from thier homes</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Testimonial Section -->
-      <section class="testimonial-section">
-        <div class="section-header">
-          <h3>Testimonials</h3>
-        </div>
-
-        <div class="testimonial-cards-container">
-          <div class="testimonial-card">
-            <div class="image-container">
-              <img src="/images/Team Members Image Avatar.png" alt="image of a person" />
-            </div>
-
-            <div class="testimonial-card-text">
-              <h4>Chinwe O., Freelance UI/UX Designer & Graphic Artist</h4>
-              <p>
-                Before joining this program, I had a degree but no job. Every
-                job required experience I didn’t have, and I felt stuck. Then I
-                enrolled in the free Graphic Design and UI/UX training, and my
-                life changed completely. Within three months, I built a
-                portfolio, started freelancing on Fiverr, and landed my first
-                client. Today, I work with international clients and make more
-                than I ever thought possible—all from my laptop! This program
-                gave me a future I never thought I’d have.
-              </p>
-            </div>
-
-            <div class="icon-container"></div>
-          </div>
-
-          <div class="testimonial-card">
-            <div class="image-container">
-              <img src="/images/Team Members Image Avatar.png" alt="image of a person" />
-            </div>
-
-            <div class="testimonial-card-text">
-              <h4>Chinwe O., Freelance UI/UX Designer & Graphic Artist</h4>
-              <p>
-                Before joining this program, I had a degree but no job. Every
-                job required experience I didn’t have, and I felt stuck. Then I
-                enrolled in the free Graphic Design and UI/UX training, and my
-                life changed completely. Within three months, I built a
-                portfolio, started freelancing on Fiverr, and landed my first
-                client. Today, I work with international clients and make more
-                than I ever thought possible—all from my laptop! This program
-                gave me a future I never thought I’d have.
-              </p>
-            </div>
-
-            <div class="icon-container"></div>
-          </div>
-
-          <div class="testimonial-card">
-            <div class="image-container">
-              <img src="/images/Team Members Image Avatar.png" alt="image of a person" />
-            </div>
-
-            <div class="testimonial-card-text">
-              <h4>Chinwe O., Freelance UI/UX Designer & Graphic Artist</h4>
-              <p>
-                Before joining this program, I had a degree but no job. Every
-                job required experience I didn’t have, and I felt stuck. Then I
-                enrolled in the free Graphic Design and UI/UX training, and my
-                life changed completely. Within three months, I built a
-                portfolio, started freelancing on Fiverr, and landed my first
-                client. Today, I work with international clients and make more
-                than I ever thought possible—all from my laptop! This program
-                gave me a future I never thought I’d have.
-              </p>
-            </div>
-
-            <div class="icon-container"></div>
-          </div>
-        </div>
-      </section>
-
-      <!-- How it works Section -->
-      <section class="how-it-works-section">
-        <div class="hiw-header">
-          <h2>How it Works: Your Journey to a Tech-Powered Future</h2>
-
-          <p>
-            We’ve made it simple and accessible for anyone—regardless of
-            background, education, or experience—to start learning tech skills
-            and earning from home. Here’s how you can begin your journey with us
-            in just three easy steps:
-          </p>
-        </div>
-
-        <div class="hiw-steps-container">
-          <div class="step">
-            <div class="step-header">
-              <div class="step-chip">
-                <h1>Step one</h1>
-              </div>
-
-              <div class="step-header-text">
-                <h3>Register for Free</h3>
-                <p>No fees, no barriers, just your willingness to learn</p>
-              </div>
-            </div>
-
-            <div class="step-supporting-text">
-              <p>
-                Signing up is easy! Click on the
-                <span>“Join the Training”</span> button and
-                fill out a short form with your name, email, phone number, and
-                preferred training program.
-              </p>
-            </div>
-
-            <div class="step-who-can-apply">
-              <h3>Who Can Apply?</h3>
-
-              <ul>
-                <li>
-                  <i class="fa-regular fa-square-check"></i> Young adults
-                  looking to gain digital skill and improve career prospects
-                </li>
-                <li>
-                  <i class="fa-regular fa-square-check"></i> Children interested
-                  in learning technology from an early age
-                </li>
-                <li>
-                  <i class="fa-regular fa-square-check"></i> Individuals who
-                  want to start freelancing or working remotely
-                </li>
-                <li>
-                  <i class="fa-regular fa-square-check"></i> Anyone eager to
-                  learn, regardless of educational background
-                </li>
-              </ul>
-            </div>
-
-            <div class="step-what-you-will-get">
-              <div class="what-you-will-get-header">
-                <h3>What You'll Get After Registration:</h3>
-              </div>
-
-              <div class="wywg-chips-container">
-                <div class="chip-blue">
-                  <p>Access to our training materials and live sessions</p>
-                </div>
-                <div class="chip-yellow">
-                  <p>
-                    Guidance from experienced mentors and industry professionals
-                  </p>
-                </div>
-                <div class="chip-blue">
-                  <p>
-                    A supportive learning community of like-minded students and
-                    professionals
-                  </p>
-                </div>
-              </div>
-
-              <p>
-                Once registered, you’ll receive a confirmation email or SMS with
-                details about the next training session in your local government
-                area or online.
-              </p>
-            </div>
-
-            <div class="button-container">
-              <a href="join.html">Join the Training</a>
-            </div>
-          </div>
-
-          <div class="step">
-            <div class="step-header">
-              <div class="step-chip">
-                <h1>Step two</h1>
-              </div>
-
-              <div class="step-header-text">
-                <h3>Join a Training Session</h3>
-                <p>Turn your new skill into real income opportunities</p>
-              </div>
-            </div>
-
-            <div class="step-supporting-text">
-              <p>
-                We conduct our
-                <span>training both in-person and online,</span> so you can
-                choose the method that works best for you.
-              </p>
-            </div>
-
-            <div class="step-who-can-apply">
-              <h3>Training Formats:</h3>
-
-              <ul>
-                <li class="session">
-                  <i class="fa-regular fa-square-check"></i> <div class="training-format">
-                    <h4>Physical Workshops</h4>
-                    <p>
-                      If you’re in an area where we’re hosting a session, you can
-                      join us for an immersive, hands-on training experience. We
-                      bring laptops, internet access, and expert instructors to
-                      ensure you get the best learning environment.
-                  </p>
-                  </div>
-                </li>
-
-                <li class="session">
-                  <i class="fa-regular fa-square-check"></i> 
-                  
-                  <div class="training-format">
-                    <h4>Online Learnings</h4>
-                   <p>
-                      Can’t attend in person? No problem! Our live virtual
-                      sessions and recorded lessons allow you to learn at your own
-                      pace, with support from our instructors whenever you need
-                      help.
-                    </p>
-                  </div>
-                </li>
-              </ul>
-            </div>
-
-            <!-- <div class="step-what-you-will-get">
-              <div class="what-you-will-get-header">
-                <h3>What You'll Get After Registration:</h3>
-              </div>
-
-              <div class="wywg-chips-container">
-                <div class="chip-blue">
-                  <p>Access to our training materials and live sessions</p>
-                </div>
-                <div class="chip-yellow">
-                  <p>Guidance from experienced mentors and industry professionals</p>
-                </div>
-                <div class="chip-blue">
-                  <p>A supportive learning community of like-minded students and professionals</p>
-                </div>
-              </div>
-
-              
-            </div> -->
-            <p>
-              You’ll work on <span>real-life projects,</span> receive feedback
-              from experienced mentors, and build your own portfolio while you
-              learn.
-            </p>
-            <div class="button-container">
-              <a href="join.html">Join the Training</a>
-            </div>
-          </div>
-
-          <div class="step">
-            <div class="step-header">
-              <div class="step-chip">
-                <h1>Step three</h1>
-              </div>
-
-              <div class="step-header-text">
-                <h3>Start Learning & Earning</h3>
-                <p>
-                  Hands-on, practical training designed for beginners and
-                  professionals alike.
-                </p>
-              </div>
-            </div>
-
-            <div class="step-supporting-text">
-              <p>
-                Learning with us isn’t just about theory—it’s about
-                <span class="bold-text"
-                  >taking action and building a future for yourself.</span
-                >
-              </p>
-            </div>
-
-            <div class="step-who-can-apply">
-              <h3>What Happens After Training?</h3>
-
-              <ul>
-                <li>
-                  <i class="fa-regular fa-square-check"></i> Freelancing
-                  Guidance – We’ll show you how to set up profiles on platforms
-                  like Fiverr and Upwork,
-                </li>
-                <li>
-                  <i class="fa-regular fa-square-check"></i> Portfolio
-                  Development – You’ll create a personal portfolio to showcase
-                  your work to potential
-                </li>
-                <li>
-                  <i class="fa-regular fa-square-check"></i> Job Opportunities –
-                  We connect outstanding students with companies looking for
-                  digital talent.
-                </li>
-                <li>
-                  <i class="fa-regular fa-square-check"></i> Continued
-                  Mentorship – Even after your training, you’ll be part of <span
-                    >a community where you can ask questions, get feedback, and
-                    stay motivated.</span
-                  >
-                </li>
-              </ul>
-            </div>
-
-            <!-- <div class="step-what-you-will-get">
-              <div class="what-you-will-get-header">
-                <h3>What You'll Get After Registration:</h3>
-              </div>
-
-              <div class="wywg-chips-container">
-                <div class="chip-blue">
-                  <p>Access to our training materials and live sessions</p>
-                </div>
-                <div class="chip-yellow">
-                  <p>
-                    Guidance from experienced mentors and industry professionals
-                  </p>
-                </div>
-                <div class="chip-blue">
-                  <p>
-                    A supportive learning community of like-minded students and
-                    professionals
-                  </p>
-                </div>
-              </div>
-
-              <p>
-                Once registered, you’ll receive a confirmation email or SMS with
-                details about the next training session in your local government
-                area or online.
-              </p>
-            </div> -->
-
-            <div class="button-container">
-              <a href="join.html">Join the Training</a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Second hero section -->
-      <section class="call-to-action-section">
-        <div class="right-call-to-action-text-and-button">
-          <div class="text">
-            <h2>Taking Tech Education to Every Local Government in Nigeria</h2>
-            <p>
-              We travel to communities to train young minds for free. Your support helps us reach more people.
-            </p>
-          </div>
-
-          <div class="join-button-container">
-            <a href="donate.html" class="donate-button">Volunteer or Donate now</a>
-          </div>
-        </div>
-
-        <div class="left-call-to-action-image">
-          <img src="/images/students-paying-attention-class 1.png" alt="Call to Action Image" />
-      </section>
-
-      <!-- Contact Section -->
-       <section class="contact-section-and-footer-section">
-          <section class="contact-section">
-            <div class="contact-card">
-          <div class="contact-card-header">
-            <h2>Contact Us</h2>
-          </div>
-
-          <div class="contact-card-list">
-            <div class="contact-card-list-item">
-              <i class="fa-solid fa-location-dot"></i><p>29 Durban Street, Wuse 2 Abuja</p> 
-            </div>
-              <div class="contact-card-list-item">
-                <i class="fa-solid fa-envelope-open"></i> <p>glinttech@gmail.com</p>
-              </div>
-
-              <div class="contact-card-list-item"><i  class="fa-solid fa-phone"></i> <span>2347065008157</span> <span>2347065004567</span>
-              </div>
-            </d>
-          </div>
-            </div>
-
-           <div class="contact-form">
-          <form action="" method="POST">
-            <div class="fullname">
-              <div class="first-name">
-                <label for="first-name">First Name</label>
-                <input type="text" name="first-name" placeholder="First name">
-              </div>
-              <div class="last-name">
-                <label for="last-name">Last Name</label>
-                <input type="text" name="last-name" placeholder="Last name">
-              </div>
-            </div>
-
-            <div class="email">
-              <label for="email">Email</label>
-              <input type="email" name="email" placeholder="Your email address">
-            </div>
-
-            <div class="subject">
-              <label for="subject">Subject</label>
-              <input type="text" name="subject" placeholder="Subject">
-            </div>
-
-            <div class="message">
-              <label for="message">Message</label>
-              <textarea name="message" placeholder="Your message"></textarea>
-            </div>
-
-            <button type="submit" class="form-submit-button">Submit</button>
-            
-          </form>
-            </div>
-          </section>
-        
-
-          <section class="footer-section">
-        <div class="foot-logo">
-          <a href="index.html"
-            ><img src="/images/Logo.png" alt="Glint Tech Logo"
-          /></a>
-        </div>
-
-        <div class="footer-menu">
-          <div class="right">
-            <ul>
-              <li><a href="index.html">Home</a></li>
-              <li><a href="about.html">Contact</a></li>
-              <li><a href="services.html">About Us</a></li>
-              <li class="link"><a href="donate.html">Join the training</a></li>
-            </ul>
-          </div>
-
-          <div class="left">
-            <ul>
-              <li><a href="masterclass.html">Master Class</a></li>
-              <li><a href="internship.html">Internship</a></li>
-              <li><a href="careers.html">Careers</a></li>
-              <li class="link"><a href="donate.html">Donate</a></li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="copyright">
-          <div class="left">
-            <p>&copy; 2023 Glint Tech. All rights reserved.</p>
-          </div>
-
-          <!-- <div class="right">
-            <ul>
-              <li><a href="#"><i class="fa-brands fa-facebook"></i></a></li>
-              <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
-              <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
-              <li><a href="#"><i class="fa-brands fa-linkedin"></i></a></li>
-            </ul>
-          </div> -->
-        </div>
-       
-          </section>
-       </section>
-
-
-      <!-- Footer Section -->
-      
-
-    </div>
+    </footer>
 
     <script src="main.js"></script>
   </body>
